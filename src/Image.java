@@ -1,7 +1,6 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 
 public class Image {
@@ -9,17 +8,19 @@ public class Image {
     public static void main(String[] args) throws IOException {
         int width;
         int height;
-        int targetwidth = 48;
-        int targetheight = 48;
-        String path = "";
-        String targetPath = "";
+        int targetwidth;
+        int targetheight;
+        String path;
+        String targetPath;
 
-        if (args.length != 0) {
-            targetwidth = Integer.parseInt(args[0]);
-            targetheight = Integer.parseInt(args[1]);
-            path = args[2];
-            targetPath = args[3];
+        if (args.length < 4) {
+            throw new IllegalArgumentException("Not enough arguments");
         }
+
+        targetwidth = Integer.parseInt(args[0]);
+        targetheight = Integer.parseInt(args[1]);
+        path = args[2];
+        targetPath = args[3];
 
         BufferedImage img = null;
         try {
